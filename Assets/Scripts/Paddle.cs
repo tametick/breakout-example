@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 public class Paddle : MonoBehaviour {
 	public Joint joint;
 	public Rigidbody puck;
+	public float leftLimit;
+	public float rightLimit;
 
 	public List<Rigidbody> extraPucks;
 
@@ -17,6 +19,12 @@ public class Paddle : MonoBehaviour {
 		// move paddle left
 		if (Input.GetKey(KeyCode.LeftArrow)) {
 			transform.Translate(new Vector3(-10 * Time.deltaTime, 0, 0));
+		}
+
+		// keep the paddle between the limits
+		float newX = Mathf.Clamp(transform.position.x, leftLimit, rightLimit);
+		if (transform.position.x != newX) {
+			transform.position = new Vector3(newX, transform.position.y, transform.position.z);
 		}
 
 		// launch puck
