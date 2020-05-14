@@ -7,5 +7,4 @@ public class FallIntoPlace : MonoBehaviour {
 		transform.Translate(new Vector3(0, 10, 0));
 		transform.DOMoveY(targetY, Random.Range(0.5f, 1)).SetEase(Ease.OutBounce);
 	}
-
 }
