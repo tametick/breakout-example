@@ -23,6 +23,7 @@ public class Paddle : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Space) && joint != null) {
 			joint.breakForce = 0;
 			puck.AddForce(new Vector3(0, 10, 0));
+			puck.GetComponent<Puck>().launched = true;
 		}
 	}
 
