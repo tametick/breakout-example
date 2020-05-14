@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 70217527}
   - component: {fileID: 70217526}
   - component: {fileID: 70217525}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: topWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1760,7 +1760,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -3534,7 +3534,7 @@ GameObject:
   - component: {fileID: 1779725182}
   - component: {fileID: 1779725181}
   - component: {fileID: 1779725180}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: leftWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3752,7 +3752,7 @@ GameObject:
   - component: {fileID: 1918476868}
   - component: {fileID: 1918476867}
   - component: {fileID: 1918476866}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: rightWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3846,7 +3846,7 @@ GameObject:
   - component: {fileID: 1944232649}
   - component: {fileID: 1944232648}
   - component: {fileID: 1944232652}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
