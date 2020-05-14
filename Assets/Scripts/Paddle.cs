@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -42,6 +43,7 @@ public class Paddle : MonoBehaviour {
 	}
 
 	void Start() {
+		DOTween.Init();
 		NewPuck();
 	}
 
