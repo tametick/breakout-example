@@ -22,9 +22,15 @@ public class Paddle : MonoBehaviour {
 		// launch puck
 		if (Input.GetKeyDown(KeyCode.Space) && joint != null) {
 			joint.breakForce = 0;
-			puck.AddForce(new Vector3(0, 10, 0));
-			puck.GetComponent<Puck>().launched = true;
+			// this force will break the joint
+			puck.AddForce(new Vector3(0, 1, 0));
 		}
+	}
+
+	void OnJointBreak(float breakForce) {
+		// once the joint is broken, launch puck upwards
+		puck.AddForce(new Vector3(0, 10, 0));
+		puck.GetComponent<Puck>().launched = true;
 	}
 
 	void Start() {
@@ -50,7 +56,7 @@ public class Paddle : MonoBehaviour {
 	void OnCollisionEnter(Collision collision) {
 		float xDiff = puck.transform.position.x - transform.position.x;
 
-		Vector3 direction = new Vector3(xDiff * 10, 10, 0);
+		Vector3 direction = new Vector3(xDiff * 10, 0, 0);
 		puck.AddForce(direction, ForceMode.VelocityChange);
 	}
 }
