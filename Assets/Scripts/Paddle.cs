@@ -68,5 +68,7 @@ public class Paddle : MonoBehaviour {
 
 		Vector3 direction = new Vector3(xDiff * 10, 0, 0);
 		puck.AddForce(direction, ForceMode.VelocityChange);
+
+		GetComponent<AudioSource>().Play();
 	}
 }

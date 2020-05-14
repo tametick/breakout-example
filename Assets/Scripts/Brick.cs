@@ -2,7 +2,11 @@
 
 public class Brick : MonoBehaviour {
 	void OnCollisionEnter(Collision collision) {
-		// destroy this brick
-		Destroy(gameObject);
+		GetComponent<AudioSource>().Play();
+
+		// remove this brick
+		enabled = false;
+		GetComponent<Renderer>().enabled = false;
+		GetComponent<Collider>().enabled = false;
 	}
 }
