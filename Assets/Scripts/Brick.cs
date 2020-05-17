@@ -1,16 +1,15 @@
 ﻿using UnityEngine;
 
 public class Brick : MonoBehaviour {
-	void OnCollisionEnter(Collision collision) {
-		// destroy this brick
-		Destroy(gameObject);
+	public CameraEffect cameraEffect;
 
-		// bounce back puck
-		Vector3 puckPosition = collision.transform.position;
-		if (puckPosition.y < transform.position.y) {
-			collision.rigidbody.AddForce(new Vector3(0, -10, 0), ForceMode.VelocityChange);
-		} else {
-			collision.rigidbody.AddForce(new Vector3(0, 10, 0), ForceMode.VelocityChange);
-		}
+	void OnCollisionEnter(Collision collision) {
+		GetComponent<AudioSource>().Play();
+		cameraEffect.Shake();
+
+		// remove this brick
+		enabled = false;
+		GetComponent<Renderer>().enabled = false;
+		GetComponent<Collider>().enabled = false;
 	}
 }

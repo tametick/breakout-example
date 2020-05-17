@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Paddle : MonoBehaviour {
 	public Joint joint;
 	public Rigidbody puck;
+	public float leftLimit;
+	public float rightLimit;
 
 	public List<Rigidbody> extraPucks;
 
@@ -19,15 +22,28 @@ public class Paddle : MonoBehaviour {
 			transform.Translate(new Vector3(-10 * Time.deltaTime, 0, 0));
 		}
 
+		float newX = Mathf.Clamp(transform.position.x, leftLimit, rightLimit);
+		if (transform.position.x != newX) {
+			transform.position = new Vector3(newX, transform.position.y, transform.position.z);
+		}
+
 		// launch puck
 		if (Input.GetKeyDown(KeyCode.Space) && joint != null) {
 			joint.breakForce = 0;
-			puck.AddForce(new Vector3(0, 10, 0));
+			// breaks the joint
+			puck.AddForce(new Vector3(0, 1, 0));
 		}
 	}
 
+	void OnJointBreak(float breakForce) {
+		// once the joint is broken, launch puck upwards
+		puck.AddForce(new Vector3(0, 10, 0), ForceMode.VelocityChange);
+		puck.GetComponent<Puck>().launched = true;
+	}
+
 	void Start() {
-		NewPuck();
+		DOTween.Init();
+		DOVirtual.DelayedCall(1, NewPuck);
 	}
 
 	public void NewPuck() {
@@ -49,7 +65,9 @@ public class Paddle : MonoBehaviour {
 	void OnCollisionEnter(Collision collision) {
 		float xDiff = puck.transform.position.x - transform.position.x;
 
-		Vector3 direction = new Vector3(xDiff * 10, 10, 0);
+		Vector3 direction = new Vector3(xDiff * 10, 0, 0);
 		puck.AddForce(direction, ForceMode.VelocityChange);
+
+		GetComponent<AudioSource>().Play();
 	}
 }
