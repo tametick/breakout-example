@@ -9,11 +9,11 @@ public class Puck : MonoBehaviour {
 	const float maxSpeed = 12f;
 
 	ParticleSystem particles;
-	Renderer renderer;
+	Renderer rend;
 
 	private void Start() {
 		particles = GetComponentInChildren<ParticleSystem>();
-		renderer = GetComponentsInChildren<Renderer>()[1];
+		rend = GetComponentsInChildren<Renderer>()[1];
 	}
 
 	Tweener punchTween;
@@ -21,9 +21,9 @@ public class Puck : MonoBehaviour {
 		particles.Play();
 		if (punchTween == null) {
 			punchTween.Kill();
-			renderer.transform.localScale = Vector3.one;
+			rend.transform.localScale = Vector3.one;
 		}
-		punchTween = renderer.transform.DOPunchScale(Vector3.one / 2, .25f);
+		punchTween = rend.transform.DOPunchScale(Vector3.one / 2, .25f);
 	}
 
 	void FixedUpdate() {
