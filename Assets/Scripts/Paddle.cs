@@ -1,7 +1,6 @@
 ﻿using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Paddle : MonoBehaviour {
 	public Joint joint;
@@ -49,7 +48,7 @@ public class Paddle : MonoBehaviour {
 	public void NewPuck() {
 		if (extraPucks.Count == 0) {
 			// game over
-			SceneManager.LoadScene("Main");
+			StateManager.Instance.RestartGame();
 		} else {
 			// fetch a new puck
 			puck = extraPucks[0];
