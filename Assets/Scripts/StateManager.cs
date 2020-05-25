@@ -9,6 +9,7 @@ public class StateManager : MonoBehaviour {
 	}
 
 	public void RestartGame() {
+		Brick.bricks = 0;
 		SceneManager.LoadScene("Main");
 	}
 }
