@@ -11,5 +11,7 @@ public class Brick : MonoBehaviour {
 		enabled = false;
 		GetComponent<Renderer>().enabled = false;
 		GetComponent<Collider>().enabled = false;
+
+		Score.Instance.AddToScore(1);
 	}
 }
