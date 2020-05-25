@@ -7,6 +7,16 @@ public class Puck : MonoBehaviour {
 	const float minSpeed = 8f;
 	const float maxSpeed = 12f;
 
+	ParticleSystem particles;
+
+	private void Start() {
+		particles = GetComponentInChildren<ParticleSystem>();
+	}
+
+	private void OnCollisionEnter(Collision collision) {
+		particles.Play();
+	}
+
 	void FixedUpdate() {
 		if (launched) {
 			float speed = rb.velocity.magnitude;
