@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 
 public class Puck : MonoBehaviour {
 	public Rigidbody rb;
@@ -8,13 +9,21 @@ public class Puck : MonoBehaviour {
 	const float maxSpeed = 12f;
 
 	ParticleSystem particles;
+	Renderer renderer;
 
 	private void Start() {
 		particles = GetComponentInChildren<ParticleSystem>();
+		renderer = GetComponentsInChildren<Renderer>()[1];
 	}
 
+	Tweener punchTween;
 	private void OnCollisionEnter(Collision collision) {
 		particles.Play();
+		if (punchTween == null) {
+			punchTween.Kill();
+			renderer.transform.localScale = Vector3.one;
+		}
+		punchTween = renderer.transform.DOPunchScale(Vector3.one / 2, .25f);
 	}
 
 	void FixedUpdate() {
