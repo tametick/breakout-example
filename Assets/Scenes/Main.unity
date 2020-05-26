@@ -12059,6 +12059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d7930872f6048c4d90a22c5f83fa852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: f71315fc49ed00847a0b27610deb1580, type: 2}
   rb: {fileID: 396403820}
   launched: 0
 --- !u!1 &409064142
@@ -14848,6 +14849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 432ade78f7c197545b0e95f3ce2efd32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: f71315fc49ed00847a0b27610deb1580, type: 2}
   joint: {fileID: 1209092008}
   puck: {fileID: 0}
   leftLimit: -8
@@ -18851,6 +18853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d7930872f6048c4d90a22c5f83fa852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: f71315fc49ed00847a0b27610deb1580, type: 2}
   rb: {fileID: 1884819452}
   launched: 0
 --- !u!1 &1918476865
@@ -19783,6 +19786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d7930872f6048c4d90a22c5f83fa852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: f71315fc49ed00847a0b27610deb1580, type: 2}
   rb: {fileID: 2047349864}
   launched: 0
 --- !u!1 &2109163298

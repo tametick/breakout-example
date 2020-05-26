@@ -2,11 +2,10 @@
 using UnityEngine;
 
 public class Puck : MonoBehaviour {
+	public Settings settings;
+
 	public Rigidbody rb;
 	public bool launched;
-
-	const float minSpeed = 8f;
-	const float maxSpeed = 12f;
 
 	ParticleSystem particles;
 	Renderer rend;
@@ -28,14 +27,17 @@ public class Puck : MonoBehaviour {
 
 	void FixedUpdate() {
 		if (launched) {
+			float minSpeed = settings.speedFactor / 1.2f;
+			float maxSpeed = settings.speedFactor * 1.2f;
+
 			float speed = rb.velocity.magnitude;
 
 			if (speed < minSpeed) {
 				// too slow, make it faster
-				rb.velocity *= 10f / minSpeed;
+				rb.velocity *= settings.speedFactor / minSpeed;
 			} else if (speed > maxSpeed) {
 				// too fast, make it slower
-				rb.velocity *= 10f / maxSpeed;
+				rb.velocity *= settings.speedFactor / maxSpeed;
 			}
 		}
 	}

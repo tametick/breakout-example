@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Paddle : MonoBehaviour {
+	public Settings settings;
+
 	public Joint joint;
 	public Rigidbody puck;
 	public float leftLimit;
@@ -13,12 +15,12 @@ public class Paddle : MonoBehaviour {
 	void Update() {
 		// move paddle right
 		if (Input.GetKey(KeyCode.RightArrow)) {
-			transform.Translate(new Vector3(10 * Time.deltaTime, 0, 0));
+			transform.Translate(new Vector3(settings.speedFactor * Time.deltaTime, 0, 0));
 		}
 
 		// move paddle left
 		if (Input.GetKey(KeyCode.LeftArrow)) {
-			transform.Translate(new Vector3(-10 * Time.deltaTime, 0, 0));
+			transform.Translate(new Vector3(-settings.speedFactor * Time.deltaTime, 0, 0));
 		}
 
 		float newX = Mathf.Clamp(transform.position.x, leftLimit, rightLimit);
@@ -36,7 +38,7 @@ public class Paddle : MonoBehaviour {
 
 	void OnJointBreak(float breakForce) {
 		// once the joint is broken, launch puck upwards
-		puck.AddForce(new Vector3(0, 10, 0), ForceMode.VelocityChange);
+		puck.AddForce(new Vector3(0, settings.speedFactor, 0), ForceMode.VelocityChange);
 		puck.GetComponent<Puck>().launched = true;
 	}
 
@@ -64,7 +66,7 @@ public class Paddle : MonoBehaviour {
 	void OnCollisionEnter(Collision collision) {
 		float xDiff = puck.transform.position.x - transform.position.x;
 
-		Vector3 direction = new Vector3(xDiff * 10, 0, 0);
+		Vector3 direction = new Vector3(xDiff * settings.speedFactor, 0, 0);
 		puck.AddForce(direction, ForceMode.VelocityChange);
 
 		GetComponent<AudioSource>().Play();
